@@ -39,7 +39,6 @@ object FrmXml: TFrmXml
     ParentBackground = False
     ParentFont = False
     TabOrder = 0
-    ExplicitWidth = 1008
     object Label1: TLabel
       Left = 310
       Top = 41
@@ -438,14 +437,12 @@ object FrmXml: TFrmXml
     Font.Style = []
     ParentFont = False
     TabOrder = 2
-    ExplicitTop = 582
-    ExplicitWidth = 1008
     object TabSheet1: TTabSheet
       Caption = 'Detalhes Itens - Fornecedor'
       object DBGrid1: TDBGrid
         Left = 0
         Top = 0
-        Width = 1000
+        Width = 998
         Height = 99
         Align = alClient
         BorderStyle = bsNone
@@ -773,7 +770,7 @@ object FrmXml: TFrmXml
         Left = 16
         Top = 24
         Width = 100
-        Height = 21
+        Height = 26
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -793,7 +790,7 @@ object FrmXml: TFrmXml
         Left = 16
         Top = 64
         Width = 100
-        Height = 21
+        Height = 26
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -813,7 +810,7 @@ object FrmXml: TFrmXml
         Left = 128
         Top = 64
         Width = 100
-        Height = 21
+        Height = 26
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -833,7 +830,7 @@ object FrmXml: TFrmXml
         Left = 126
         Top = 24
         Width = 100
-        Height = 21
+        Height = 26
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -853,7 +850,7 @@ object FrmXml: TFrmXml
         Left = 236
         Top = 24
         Width = 100
-        Height = 21
+        Height = 26
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -873,7 +870,7 @@ object FrmXml: TFrmXml
         Left = 237
         Top = 64
         Width = 100
-        Height = 21
+        Height = 26
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -893,7 +890,7 @@ object FrmXml: TFrmXml
         Left = 347
         Top = 24
         Width = 100
-        Height = 21
+        Height = 26
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -913,7 +910,7 @@ object FrmXml: TFrmXml
         Left = 347
         Top = 64
         Width = 100
-        Height = 21
+        Height = 26
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -933,7 +930,7 @@ object FrmXml: TFrmXml
         Left = 458
         Top = 64
         Width = 100
-        Height = 21
+        Height = 26
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -953,7 +950,7 @@ object FrmXml: TFrmXml
         Left = 457
         Top = 24
         Width = 100
-        Height = 21
+        Height = 26
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -973,7 +970,7 @@ object FrmXml: TFrmXml
         Left = 568
         Top = 24
         Width = 100
-        Height = 21
+        Height = 26
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -993,7 +990,7 @@ object FrmXml: TFrmXml
         Left = 676
         Top = 24
         Width = 100
-        Height = 21
+        Height = 26
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -1013,7 +1010,7 @@ object FrmXml: TFrmXml
         Left = 676
         Top = 64
         Width = 100
-        Height = 21
+        Height = 26
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -1033,7 +1030,7 @@ object FrmXml: TFrmXml
         Left = 782
         Top = 64
         Width = 100
-        Height = 21
+        Height = 26
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -1053,7 +1050,7 @@ object FrmXml: TFrmXml
         Left = 783
         Top = 24
         Width = 100
-        Height = 21
+        Height = 26
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -1073,7 +1070,7 @@ object FrmXml: TFrmXml
         Left = 568
         Top = 64
         Width = 100
-        Height = 21
+        Height = 26
         TabStop = False
         Color = clWhite
         Ctl3D = False
@@ -1121,8 +1118,6 @@ object FrmXml: TFrmXml
     Color = clWhite
     ParentBackground = False
     TabOrder = 1
-    ExplicitWidth = 1008
-    ExplicitHeight = 485
     object Label2: TLabel
       Left = 2
       Top = 2
@@ -1150,8 +1145,6 @@ object FrmXml: TFrmXml
       Height = 414
       Align = alRight
       TabOrder = 0
-      ExplicitLeft = 917
-      ExplicitHeight = 422
       object btnLoc: TBitBtn
         AlignWithMargins = True
         Left = 4
@@ -1244,8 +1237,6 @@ object FrmXml: TFrmXml
         ParentFont = False
         TabOrder = 0
         OnClick = btnLocClick
-        ExplicitTop = 67
-        ExplicitWidth = 62
       end
       object btnCadastrar: TBitBtn
         AlignWithMargins = True
@@ -1339,7 +1330,6 @@ object FrmXml: TFrmXml
         ParentFont = False
         TabOrder = 1
         OnClick = btnCadastrarClick
-        ExplicitWidth = 62
       end
       object btnDesvincularTodos: TBitBtn
         AlignWithMargins = True
@@ -1433,8 +1423,6 @@ object FrmXml: TFrmXml
         ParentFont = False
         TabOrder = 2
         OnClick = btnDesvincularTodosClick
-        ExplicitTop = 193
-        ExplicitWidth = 62
       end
       object btnGrupo: TBitBtn
         AlignWithMargins = True
@@ -1528,8 +1516,6 @@ object FrmXml: TFrmXml
         ParentFont = False
         TabOrder = 3
         OnClick = btnGrupoClick
-        ExplicitTop = 256
-        ExplicitWidth = 62
       end
       object btnDesvincular: TBitBtn
         AlignWithMargins = True
@@ -1623,8 +1609,6 @@ object FrmXml: TFrmXml
         ParentFont = False
         TabOrder = 4
         OnClick = btnDesvincularClick
-        ExplicitTop = 130
-        ExplicitWidth = 62
       end
       object btnCadastrarTodos: TBitBtn
         AlignWithMargins = True
@@ -1774,9 +1758,6 @@ object FrmXml: TFrmXml
         ParentFont = False
         TabOrder = 5
         OnClick = btnCadastrarTodosClick
-        ExplicitLeft = 6
-        ExplicitTop = 55
-        ExplicitWidth = 62
       end
     end
     object DBGridEh1: TDBGridEh
@@ -1920,8 +1901,6 @@ object FrmXml: TFrmXml
       Font.Style = []
       ParentFont = False
       TabOrder = 2
-      ExplicitTop = 440
-      ExplicitWidth = 1004
       object DBText1: TDBText
         Left = 14
         Top = 19

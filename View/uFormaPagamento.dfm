@@ -1000,7 +1000,7 @@ object frmFechaVenda: TfrmFechaVenda
           Left = 159
           Top = 30
           Width = 218
-          Height = 19
+          Height = 38
           TabStop = False
           Ctl3D = False
           DataField = 'TROCO'
@@ -1020,7 +1020,7 @@ object frmFechaVenda: TfrmFechaVenda
           Left = 13
           Top = 30
           Width = 140
-          Height = 19
+          Height = 38
           TabStop = False
           Ctl3D = False
           DataField = 'CODIGO'

@@ -111,9 +111,6 @@ object frmConsCTe: TfrmConsCTe
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
-      ExplicitLeft = 7
-      ExplicitTop = 627
-      ExplicitWidth = 1172
       object cxAlterar: TcxButton
         AlignWithMargins = True
         Left = 114
@@ -953,7 +950,6 @@ object frmConsCTe: TfrmConsCTe
     Color = 16514043
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 461
     object LblSaldo: TLabel
       Left = 633
       Top = 10
@@ -1522,11 +1518,10 @@ object frmConsCTe: TfrmConsCTe
         object Label14: TLabel
           Left = 0
           Top = 0
-          Width = 582
+          Width = 142
           Height = 17
           Align = alTop
           Caption = '  Descri'#231#227'o da Corre'#231#227'o'
-          ExplicitWidth = 142
         end
         object Grupo: TLabel
           Left = 40
@@ -1892,7 +1887,7 @@ object frmConsCTe: TfrmConsCTe
     object GroupBox2: TGroupBox
       Left = 0
       Top = 0
-      Width = 1194
+      Width = 1087
       Height = 62
       Align = alClient
       Caption = 'F12 Filtro'
@@ -1903,6 +1898,7 @@ object frmConsCTe: TfrmConsCTe
       Font.Style = []
       ParentFont = False
       TabOrder = 0
+      ExplicitWidth = 1194
       object LblPeriodo: TLabel
         Left = 10
         Top = 18
@@ -1996,6 +1992,67 @@ object frmConsCTe: TfrmConsCTe
         TextHint = 'Digite aqui sua pesquisa'
         OnChange = edtLocChange
         OnKeyDown = edtLocKeyDown
+      end
+    end
+    object Panel12: TPanel
+      AlignWithMargins = True
+      Left = 1090
+      Top = 3
+      Width = 101
+      Height = 56
+      Align = alRight
+      BevelOuter = bvNone
+      TabOrder = 1
+      ExplicitLeft = 1158
+      ExplicitHeight = 35
+      object cxSair: TcxButton
+        Left = 0
+        Top = 0
+        Width = 101
+        Height = 56
+        Margins.Left = 7
+        Margins.Top = 7
+        Margins.Right = 0
+        Margins.Bottom = 7
+        Align = alClient
+        Caption = 'Fechar'
+        LookAndFeel.NativeStyle = False
+        LookAndFeel.SkinName = 'DevExpressDarkStyle'
+        OptionsImage.Glyph.SourceDPI = 96
+        OptionsImage.Glyph.Data = {
+          89504E470D0A1A0A0000000D49484452000000100000001008060000001FF3FF
+          610000001D744558745469746C6500436C6F73653B457869743B426172733B52
+          6962626F6E3B4603B9E8000002AD49444154785E85934B4C546714C77FF73232
+          0C041DC2237644C368F109868D98A0290BDA60E2DE9526921856C3C2A08C2E1A
+          A336A64DB48D81A8892D6E241A7CA20B1530261849DA4D47596818082F015118
+          0698B973DFB7773EB1333BEE97FFCD3927DFF97DE77B1CE9E3AF17293FF3B30C
+          48426B7D9939765A1290337AE1DC4B8F2CD73B0E802306C24CEB9BE7ACFA6206
+          86650FECFCE55283079025DBAE2F3D5CB79A94B58E206692C5CF1606933DAF7F
+          006451BA69986099A8C3C38C3C7846D791D3BCB97413351A151AFCADD38D8589
+          DE7F412A3A426A388AC801D92300A689E36A2A1225129923D8D1C9FC9387FCDD
+          D587244BC4037BDC581B91AB97716C93F2AA6D989A004802A0AF28382EF19F3B
+          FD34F4F7515852C4E2AE20FFFED10140CDC9101B0ABD54B4FFCEAB1F7F62D3F9
+          0AB4643203589E9C469F9926B8BF8AF947DD94B5849072246A5A43E040913F9F
+          BC75394C3DEE2658BB9BD4F07BE2E3B35915A83AFAA719766CCDE7C3403F43C8
+          6C6D6EC65FE8C391C0B660E8FA359203BD546EF7A34E4C60A49C2C8066602514
+          B4D94F98F12596150DDB721043DC84CC4A3A168FA14FA75CA085A17D05885B30
+          D280548AE8FB39947D8D048E3661D936DE5C99BC5C8FB0BF3BD684527B88D1D1
+          18B6AAE22E9A5D8186954C105B50680C87503D3EF2BDEE9E6FFD0940F9F11380
+          8FFA700BBD4FEEB2A94842D73D990A74DDC45C49B2A37A336FDB4E5122AB8C5F
+          6FE7CBBDDB7C763571A39D328FCEBB702BDF6F2FC352750C4DCFBC0343750189
+          243E3381131BE369DD018A4BD71328CE136730D7D3CDD3CEBFD8B2A518AF99C0
+          4C030CFEDF82EBE802602C2CE22DC8676F7500633981E2DE0C1694FAFD6C2C29
+          419D8FA12515B06C4C43461080822B6595CF7D927410475A3DF9ACA6B0859FDD
+          50C2566C7BF0ECD258A3E846200FF066B5AAB4462B3B800628FF0122CC6063F4
+          5F96130000000049454E44AE426082}
+        TabOrder = 0
+        Font.Charset = ANSI_CHARSET
+        Font.Color = clWindowText
+        Font.Height = -15
+        Font.Name = 'Segoe UI'
+        Font.Style = []
+        ParentFont = False
+        OnClick = cxSairClick
       end
     end
   end

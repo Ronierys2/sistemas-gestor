@@ -190,6 +190,8 @@ type
     cxWhats: TcxButton;
     cxTransmitir: TcxButton;
     cxInutiliza: TcxButton;
+    Panel12: TPanel;
+    cxSair: TcxButton;
     procedure edtLocChange(Sender: TObject);
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
@@ -221,6 +223,7 @@ type
     procedure cxGerarClick(Sender: TObject);
     procedure cxImprimirClick(Sender: TObject);
     procedure cxWhatsClick(Sender: TObject);
+    procedure cxSairClick(Sender: TObject);
   private
     procedure localiza;
     procedure tamanho;
@@ -752,6 +755,11 @@ begin
     btnFiltrar.Click;
   end;
 
+end;
+
+procedure TfrmConsCTe.cxSairClick(Sender: TObject);
+begin
+close;
 end;
 
 procedure TfrmConsCTe.cxTransmitirClick(Sender: TObject);

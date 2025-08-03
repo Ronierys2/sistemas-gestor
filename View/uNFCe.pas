@@ -1,4 +1,4 @@
-{ SITUAÇÃO DA VENDA
+﻿{ SITUAÇÃO DA VENDA
   0:ABERTA
   1:GERADA
   2:TRANSMITIDA
@@ -1971,7 +1971,7 @@ begin
   if not ValidaNegocios then
     exit;
   try
-    if dmnfe.ACBrNFe.Enviar('1', false, true) then
+    if dmnfe.ACBrNFe.Enviar('1', False, true) then
     begin
       sTransmitida;
       if not FTodos then

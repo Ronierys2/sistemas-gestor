@@ -1,14 +1,14 @@
 unit uImportarXMLNFe;
 
-interface //Suporte e Vendas direto no Whatsapp (48)998463846
+interface // Suporte e Vendas direto no Whatsapp (48)998463846
 
 uses
-  Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants,
-  System.Classes, Vcl.Graphics, pcnConversao,
+  Winapi.Windows, Winapi.Messages, System.Variants, System.SysUtils,
+  System.Classes, Vcl.Graphics, pcnConversao, pcnConversaoNFe,
   Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.Buttons, Vcl.ExtCtrls,
   FireDAC.Stan.Intf, FireDAC.Stan.Option, FireDAC.Stan.Param,
   FireDAC.Stan.Error, FireDAC.DatS, FireDAC.Phys.Intf, FireDAC.DApt.Intf,
-  FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet,
+  FireDAC.Stan.Async, FireDAC.DApt, Data.DB, FireDAC.Comp.DataSet, ACBrUtil,
   FireDAC.Comp.Client, Vcl.StdCtrls, ACBrBase, ACBrDFe, ACBrNFe, Vcl.ComCtrls;
 
 type
@@ -21,7 +21,6 @@ type
     OpenDialog1: TOpenDialog;
     ACBrNFe: TACBrNFe;
     Panel2: TPanel;
-    Button1: TButton;
     qryProdutos: TFDQuery;
     qryProdutosCODIGO: TIntegerField;
     qryProdutosTIPO: TStringField;
@@ -145,7 +144,6 @@ type
     qryItensVICMSUFREMET: TFMTBCDField;
     qryItensALIQ_ICMS_ST: TFMTBCDField;
     qryItensGERA_ES: TStringField;
-    qryItensBASE_DESONERACAO: TFMTBCDField;
     qryItensALIQ_DESONERACAO: TFMTBCDField;
     qryItensMOTDESICMS: TSmallintField;
     qryItensVICMSDESON: TFMTBCDField;
@@ -157,9 +155,6 @@ type
     qryItensEVENDA: TStringField;
     qryItensBLOQUEADO: TStringField;
     qryItensE_S: TStringField;
-    qryItensPICMSDEFERIDO: TFMTBCDField;
-    qryItensVICMSDEFERIDO: TFMTBCDField;
-    qryItensVALOR_ICMS_ST_RET: TFMTBCDField;
     qryVendaCODIGO: TIntegerField;
     qryVendaNUMERO: TIntegerField;
     qryVendaCHAVE: TStringField;
@@ -254,10 +249,7 @@ type
     qryProdutosCST_EXTERNO: TStringField;
     qryProdutosALIQ_ICMS_EXTERNO: TFMTBCDField;
     qryProdutosORIGEM: TIntegerField;
-    qryProdutosQTD_FISCAL: TFMTBCDField;
-    qryProdutosMVA_NORMAL: TFMTBCDField;
     qryProdutosIMPRIME_TICKET: TStringField;
-    qryProdutosICMS_DIFERIDO: TFMTBCDField;
     qryCliente: TFDQuery;
     qryClienteEMPRESA: TSmallintField;
     qryClienteCODIGO: TIntegerField;
@@ -325,13 +317,21 @@ type
     TabSheet2: TTabSheet;
     memLista: TListBox;
     ListBoxErro: TListBox;
+    qryItensBASE_DESONERACAO: TBCDField;
+    qryItensPICMSDEFERIDO: TBCDField;
+    qryItensVICMSDEFERIDO: TBCDField;
+    qryItensVALOR_ICMS_ST_RET: TBCDField;
+    qryProdutosQTD_FISCAL: TBCDField;
+    qryProdutosMVA_NORMAL: TBCDField;
+    qryProdutosICMS_DIFERIDO: TBCDField;
+    SpeedButton1: TSpeedButton;
     procedure FormKeyDown(Sender: TObject; var Key: Word; Shift: TShiftState);
     procedure btnImportarClick(Sender: TObject);
-    procedure Button1Click(Sender: TObject);
     procedure memListaKeyDown(Sender: TObject; var Key: Word;
       Shift: TShiftState);
     procedure FormActivate(Sender: TObject);
     procedure btnTodosClick(Sender: TObject);
+    procedure SpeedButton1Click(Sender: TObject);
   private
     procedure ListarArquivos(Diretorio: string; Sub: Boolean);
     function TemAtributo(Attr, Val: Integer): Boolean;
@@ -343,7 +343,8 @@ type
 var
   frmImportaXMLNFe: TfrmImportaXMLNFe;
 
-implementation //Acesse lojadodesenvolvedor.com.br e saiba mais sobre esse código fonte.
+implementation
+// Acesse lojadodesenvolvedor.com.br e saiba mais sobre esse código fonte.
 
 {$R *.dfm}
 
@@ -387,65 +388,6 @@ begin
   end;
 end;
 
-procedure TfrmImportaXMLNFe.memListaKeyDown(Sender: TObject; var Key: Word;
-  Shift: TShiftState);
-begin
-  if Key = vk_delete then
-    memLista.DeleteSelected;
-
-end;
-
-procedure TfrmImportaXMLNFe.btnImportarClick(Sender: TObject);
-var
-  CNPJ_CPF, CNPJ_CPF_MASCARA, Tipo, crt: string;
-  n, i, j: Integer;
-  idFornecedor: Integer;
-begin
-  memLista.Items.Clear;
-  If application.messagebox('Tem certeza que Deseja Importar XML?',
-    'Confirmação', mb_yesno + mb_iconquestion) <> idyes then
-    exit;
-
-  OpenDialog1.Execute;
-  if OpenDialog1.FileName <> '' then
-  begin
-    edtNumero.Text := copy(ExtractFilePath(OpenDialog1.FileName), 1,
-      length(ExtractFilePath(OpenDialog1.FileName)) - 1);
-    memLista.Items.Add(ExtractFileName(OpenDialog1.FileName));
-  end
-  else
-  begin
-    ShowMessage('Arquivo inválido!');
-    exit;
-  end;
-
-end;
-
-procedure TfrmImportaXMLNFe.btnTodosClick(Sender: TObject);
-var
-  CNPJ_CPF, CNPJ_CPF_MASCARA, Tipo, crt: string;
-  n, i, j: Integer;
-  idFornecedor: Integer;
-begin
-
-  If application.messagebox('Tem certeza que Deseja Importar XML?',
-    'Confirmação', mb_yesno + mb_iconquestion) <> idyes then
-    exit;
-
-  OpenDialog1.Execute;
-  if OpenDialog1.FileName <> '' then
-    edtNumero.Text := copy(ExtractFilePath(OpenDialog1.FileName), 1,
-      length(ExtractFilePath(OpenDialog1.FileName)) - 1)
-  else
-  begin
-    ShowMessage('Arquivo inválido!');
-    exit;
-  end;
-
-  ListarArquivos(edtNumero.Text, false);
-
-end;
-
 Function RemoveAcentos(Str: String): String;
 { Remove caracteres acentuados de uma string }
 Const
@@ -464,13 +406,21 @@ Begin
   Result := Str;
 end;
 
-procedure TfrmImportaXMLNFe.Button1Click(Sender: TObject);
+procedure TfrmImportaXMLNFe.memListaKeyDown(Sender: TObject; var Key: Word;
+  Shift: TShiftState);
+begin
+  if Key = vk_delete then
+    memLista.DeleteSelected;
+
+end;
+
+procedure TfrmImportaXMLNFe.SpeedButton1Click(Sender: TObject);
 var
   CNPJ_CPF, CNPJ_CPF_MASCARA, Tipo, crt: string;
   idCliente, n, i, j: Integer;
 begin
   try
-    Button1.Enabled := false;
+    SpeedButton1.Enabled := false;
     for j := 0 to memLista.Items.Count - 1 do
     begin
       try
@@ -816,9 +766,61 @@ begin
       application.ProcessMessages;
     end;
   finally
-    Button1.Enabled := true;
+    SpeedButton1.Enabled := true;
   end;
   ShowMessage('NF-e Importado com sucesso!');
+
+end;
+
+procedure TfrmImportaXMLNFe.btnImportarClick(Sender: TObject);
+var
+  CNPJ_CPF, CNPJ_CPF_MASCARA, Tipo, crt: string;
+  n, i, j: Integer;
+  idFornecedor: Integer;
+begin
+  memLista.Items.Clear;
+  If application.messagebox('Tem certeza que Deseja Importar XML?',
+    'Confirmação', mb_yesno + mb_iconquestion) <> idyes then
+    exit;
+
+  OpenDialog1.Execute;
+  if OpenDialog1.FileName <> '' then
+  begin
+    edtNumero.Text := copy(ExtractFilePath(OpenDialog1.FileName), 1,
+      length(ExtractFilePath(OpenDialog1.FileName)) - 1);
+    memLista.Items.Add(ExtractFileName(OpenDialog1.FileName));
+  end
+  else
+  begin
+    ShowMessage('Arquivo inválido!');
+    exit;
+  end;
+
+end;
+
+procedure TfrmImportaXMLNFe.btnTodosClick(Sender: TObject);
+var
+  CNPJ_CPF, CNPJ_CPF_MASCARA, Tipo, crt: string;
+  n, i, j: Integer;
+  idFornecedor: Integer;
+begin
+
+  If application.messagebox('Tem certeza que Deseja Importar XML?',
+    'Confirmação', mb_yesno + mb_iconquestion) <> idyes then
+    exit;
+
+  OpenDialog1.Execute;
+  if OpenDialog1.FileName <> '' then
+    edtNumero.Text := copy(ExtractFilePath(OpenDialog1.FileName), 1,
+      length(ExtractFilePath(OpenDialog1.FileName)) - 1)
+  else
+  begin
+    ShowMessage('Arquivo inválido!');
+    exit;
+  end;
+
+  ListarArquivos(edtNumero.Text, false);
+
 end;
 
 procedure TfrmImportaXMLNFe.FormActivate(Sender: TObject);

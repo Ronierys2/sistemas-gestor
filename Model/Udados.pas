@@ -15,7 +15,7 @@ uses
   Vcl.Themes, ACBrSATClass, Winsock, uDMForte, System.TypInfo,
   ACBrBase, ACBrBoleto, ACBrBoletoConversao, ACBrBoletoRetorno,
   System.Classes, IdBaseComponent, IdComponent, IdIPWatch, IdTCPConnection,
-  IdTCPClient, IdExplicitTLSClientServerBase, Vcl.AppEvnts, acbrutil.FilesIO;
+  IdTCPClient, IdExplicitTLSClientServerBase, Vcl.AppEvnts, acbrutil.FilesIO, uRotinasComuns;
 
 const
   AF_UNSPEC = 0; // Suporta tanto IPv4 quanto IPv6
@@ -2728,6 +2728,41 @@ begin
   end;
 end;
 
+function RemoverAcentosECedilhasOtimizada(const ATexto: string): string;
+var
+  I: Integer;
+  Ch: Char;
+  SB: TStringBuilder;
+begin
+  SB := TStringBuilder.Create;
+  try
+    for I := 1 to Length(ATexto) do
+    begin
+      Ch := ATexto[I];
+      case Ch of
+        'À', 'Á', 'Â', 'Ã', 'Ä', 'Å': Ch := 'A';
+        'à', 'á', 'â', 'ã', 'ä', 'å': Ch := 'a';
+        'È', 'É', 'Ê', 'Ë': Ch := 'E';
+        'è', 'é', 'ê', 'ë': Ch := 'e';
+        'Ì', 'Í', 'Î', 'Ï': Ch := 'I';
+        'ì', 'í', 'î', 'ï': Ch := 'i';
+        'Ò', 'Ó', 'Ô', 'Õ', 'Ö': Ch := 'O';
+        'ò', 'ó', 'ô', 'õ', 'ö': Ch := 'o';
+        'Ù', 'Ú', 'Û', 'Ü': Ch := 'U';
+        'ù', 'ú', 'û', 'ü': Ch := 'u';
+        'Ç': Ch := 'C';
+        'ç': Ch := 'c';
+        'Ñ': Ch := 'N';
+        'ñ': Ch := 'n';
+      end;
+      SB.Append(Ch);
+    end;
+    Result := SB.ToString;
+  finally
+    SB.Free;
+  end;
+end;
+
 function TDados.BuscaPlanoConta(Codigo: Integer): boolean;
 begin
   Result := true;
@@ -3157,12 +3192,15 @@ end;
 
 function TDados.BuscaCodigoIbge(cidade, uf: string): Integer;
 begin
+  Result := 0;
   Dados.qryConsulta.Close;
   Dados.qryConsulta.sql.Text :=
     'SELECT CODIGO FROM CIDADE WHERE DESCRICAO=:DESCRI AND UF=:UF';
-  Dados.qryConsulta.Params[0].Value := cidade;
-  Dados.qryConsulta.Params[1].Value := uf;
+  Dados.qryConsulta.Params[0].Value :=  RemoverAcentosECedilhasOtimizada(UpperCase(cidade));
+  Dados.qryConsulta.Params[1].Value := UpperCase(uf);
+
   Dados.qryConsulta.Open;
+
   if not Dados.qryConsulta.IsEmpty then
     Result := Dados.qryConsulta.Fields[0].AsInteger;
 end;
@@ -4491,8 +4529,8 @@ end;
 
 procedure TDados.qryEmpresaNewRecord(DataSet: TDataSet);
 begin
-  qryEmpresaID_UF.Value := 15;
-  qryEmpresaID_CIDADE.Value := 1505502;
+  qryEmpresaID_UF.Value := 31;
+  qryEmpresaID_CIDADE.Value := 3162702;
   qryEmpresaNSERIE.Value := '';
   qryEmpresaCSENHA.Value := '';
   qryEmpresaDATA_CADASTRO.AsString := Dados.Crypt('C', datetostr(Date));

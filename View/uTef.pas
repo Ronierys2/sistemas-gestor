@@ -1,6 +1,6 @@
 unit uTef;
 
-interface //Suporte e Vendas direto no Whatsapp (48)998463846
+interface
 
 uses
   Winapi.Windows, Winapi.Messages, SysUtils, System.Variants,
@@ -118,7 +118,7 @@ implementation //Acesse lojadodesenvolvedor.com.br e saiba mais sobre esse códig
 
 {$R *.dfm}
 
-uses frExibeMensagem, Udados;
+uses frExibeMensagem, Udados, udmImpressao;
 
 procedure TFrmTEF.VerificarTestePayGo;
 var
@@ -143,7 +143,7 @@ begin
     'UPDATE VENDAS_FPG SET NSU=:NSU, INDICE=:INDICE, REDE=:REDE, REDECNPJ=:REDECNPJ, FEZ_TEF=''S'' WHERE CODIGO=:ID';
   dados.qryExecute.ParamByName('NSU').AsString := NSU;
   dados.qryExecute.ParamByName('REDE').AsString := Rede;
-  dados.qryExecute.ParamByName('REDECNPJ').AsString := Rede;
+  dados.qryExecute.ParamByName('REDECNPJ').AsString := RedeCNPJ;
   dados.qryExecute.ParamByName('INDICE').AsString := Indice;
   dados.qryExecute.ParamByName('ID').AsInteger := Codigo;
   dados.qryExecute.ExecSQL;
@@ -283,7 +283,6 @@ begin
   FCanceladoPeloOperador := False;
   FTempoDeEspera := 0;
 end;
-
 procedure TFrmTEF.Administrativo;
 begin
   AdicionarLinhaLog('- btAdministrativoClick');
@@ -302,7 +301,22 @@ begin
 
     FrmTEF.AtivarTEF(dados.qryTerminalTEF_GERENCIADOR.AsInteger);
 
+    mImpressao.Clear; // limpa antes de chamar ADM
     ACBrTEFD1.ADM;
+
+    // imprime o que foi capturado no evento OnComandaECFImprimeVia
+    if mImpressao.Lines.Count > 0 then
+    begin
+      mImpressao.Lines.SaveToFile(ExtractFilePath(Application.ExeName) + '\tef_adm.txt');
+
+      if DMImpressao.ACBrPosPrinter1.Ativo then
+      begin
+        DMImpressao.ACBrPosPrinter1.Buffer.Assign(mImpressao.Lines);
+        DMImpressao.ACBrPosPrinter1.Imprimir;
+      end;
+    end
+    else
+      AdicionarLinhaLog('Nenhuma linha de comprovante capturada após ADM.');
   finally
     StatusVenda := stsFinalizada;
   end;

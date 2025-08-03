@@ -14,7 +14,8 @@ uses
   Vcl.Tabs, Vcl.ExtDlgs, JPeg, frxClass, frxDBSet, frxExportPDF,
   ACBrBase, ACBrMail, ACBrDFe, ACBrEnterTab, pmdfeConversaomdfe,
   frxExportBaseDialog, ACBrMDFeDAMDFeRLClass,
-  ACBrDFeReport, ACBrMDFeDAMDFeClass, ACBrMDFeDAMDFEFR, ACBrMDFe, frxExportXLS;
+  ACBrDFeReport, ACBrMDFeDAMDFeClass, ACBrMDFeDAMDFEFR, ACBrMDFe, frxExportXLS,
+  cxGraphics, cxLookAndFeels, cxLookAndFeelPainters, Vcl.Menus, cxButtons;
 
 type
   TfrmConsMDFe = class(TForm)

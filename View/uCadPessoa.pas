@@ -234,12 +234,17 @@ begin
       Dados.qryPessoasNUMERO.Value := UpperCase(dmrotinas.Pessoa.numero);
       Dados.qryPessoasBAIRRO.Value := UpperCase(dmrotinas.Pessoa.Bairro);
       Dados.qryPessoasMUNICIPIO.Value := UpperCase(dmrotinas.Pessoa.Municipio);
+      Dados.qryPessoasCOMPLEMENTO.Value := UpperCase(DMRotinas.Pessoa.complemento);
       Dados.qryPessoasUF.Value := UpperCase(dmrotinas.Pessoa.uf);
       Dados.qryPessoasCEP.Value := UpperCase(tirapontos(dmrotinas.Pessoa.cep));
       Dados.qryPessoasEMAIL1.Value := UpperCase(dmrotinas.Pessoa.email);
-      Dados.qryPessoasCODMUN.Value :=
-        Dados.BuscaCodigoIbge(Dados.qryPessoasMUNICIPIO.Value,
-        Dados.qryPessoasUF.Value);
+      Dados.qryPessoasFONE1.Value := UpperCase(dmrotinas.Pessoa.telefone);
+
+ 
+      Dados.qryPessoasCODMUN.Value := dmrotinas.Pessoa.ibge.ToInteger;
+       //Dados.BuscaCodigoIbge(Dados.qryPessoasMUNICIPIO.Value,
+       //Dados.qryPessoasUF.Value);
+      //Dados.BuscaCodigoIbge(dmrotinas.Pessoa.Municipio, Dados.qryPessoasUF.Value);
 
       dmNFe.ConsultaIE(tirapontos(DBEdit8.text), Dados.qryPessoasUF.Value);
 
@@ -339,15 +344,8 @@ if Dados.qryPessoas.State in [dsInsert, dsEdit] then
 
     if Dados.qryPessoasTIPO.IsNull then
     begin
-      ShowMessage('Digite o Tipo de Pessoa!');
+      ShowMessage('Selecione o Tipo de Pessoa!');
       DBComboBox1.SetFocus;
-      exit;
-    end;
-
-    if trim(Dados.qryPessoasCNPJ.Value) = '' then
-    begin
-      ShowMessage('Digite o CNPJ!');
-      DBEdit8.SetFocus;
       exit;
     end;
 
@@ -387,64 +385,132 @@ if Dados.qryPessoas.State in [dsInsert, dsEdit] then
 
     if trim(Dados.qryPessoasRAZAO.Value) = '' then
     begin
-      ShowMessage('Digite o NOME!');
+      ShowMessage('Digite o NOME! ou RAZÃO SOCIAL');
       DBEdit2.SetFocus;
       exit;
     end;
 
-    if trim(Dados.qryPessoasENDERECO.Value) = '' then
+    if Trim(Dados.qryPessoasFANTASIA.Value) = '' then
     begin
-      ShowMessage('Digite o ENDEREÇO!');
-      DBEdit3.SetFocus;
-      exit;
+      if Application.messageBox
+            ('O campo APELIO/FANTASIA não foi preenchido!' + sLineBreak +
+            'Deseja prosseguir com o cadastro mesmo assim?', 'Confirmação', mb_YesNo) = mrNo then
+            //exit;
+      begin
+        DBEdit22.SetFocus;
+        Exit;
+      end;
     end;
 
-    if trim(Dados.qryPessoasNUMERO.Value) = '' then
+    if Trim(Dados.qryPessoasCNPJ.Value) = '' then
     begin
-      ShowMessage('Digite o NÚMERO!');
-      DBEdit2.SetFocus;
-      exit;
+      if Application.messageBox
+            ('O campo CPF/CNPJ não foi preenchido!' + sLineBreak +
+            'Deseja prosseguir com o cadastro mesmo assim?', 'Confirmação', mb_YesNo) = mrNo then
+            //exit;
+      begin
+        DBEdit8.SetFocus;
+        Exit;
+      end;
     end;
 
-    if trim(Dados.qryPessoasBAIRRO.Value) = '' then
+
+    if Trim(Dados.qryPessoasENDERECO.Value) = '' then
     begin
-      ShowMessage('Digite o BAIRRO!');
-      DBEdit4.SetFocus;
-      exit;
+      if Application.messageBox
+            ('O campo ENDEREÇO não foi preenchido!' + sLineBreak +
+            'Deseja prosseguir com o cadastro mesmo assim?', 'Confirmação', mb_YesNo) = mrNo then
+            //exit;
+      begin
+        DBEdit3.SetFocus;
+        Exit;
+      end;
     end;
 
-    if trim(Dados.qryPessoasMUNICIPIO.Value) = '' then
+    if Trim(Dados.qryPessoasNUMERO.Value) = '' then
     begin
-      ShowMessage('Digite o MUNICIPIO!');
-      DBEdit6.SetFocus;
-      exit;
+      if Application.messageBox
+            ('O campo NÚMERO não foi preenchido!' + sLineBreak +
+            'Deseja prosseguir com o cadastro mesmo assim?', 'Confirmação', mb_YesNo) = mrNo then
+            //exit;
+      begin
+        DBEdit2.SetFocus;
+        Exit;
+      end;
     end;
 
-    if trim(Dados.qryPessoasCEP.Value) = '' then
+    if Trim(Dados.qryPessoasBAIRRO.Value) = '' then
     begin
-      ShowMessage('Digite o CEP!');
-      DBEdit5.SetFocus;
-      exit;
+      if Application.messageBox
+            ('O campo BAIRRO não foi preenchido!' + sLineBreak +
+            'Deseja prosseguir com o cadastro mesmo assim?', 'Confirmação', mb_YesNo) = mrNo then
+            //exit;
+      begin
+        DBEdit4.SetFocus;
+        Exit;
+      end;
     end;
 
-    if trim(Dados.qryPessoasUF.Value) = '' then
+    if Trim(Dados.qryPessoasMUNICIPIO.Value) = '' then
     begin
-      ShowMessage('Digite o UF!');
-      exit;
+      if Application.messageBox
+            ('O campo MUNICÍPIO não foi preenchido!' + sLineBreak +
+            'Deseja prosseguir com o cadastro mesmo assim?', 'Confirmação', mb_YesNo) = mrNo then
+            //exit;
+      begin
+        DBEdit6.SetFocus;
+        Exit;
+      end;
     end;
 
-    if trim(Dados.qryPessoasISENTO.Value) = '' then
+    if Trim(Dados.qryPessoasCEP.Value) = '' then
     begin
-      ShowMessage('Informe o Tipo de Contribuinte!');
-      exit;
+      if Application.messageBox
+            ('O campo CEP não foi preenchido!' + sLineBreak +
+            'Deseja prosseguir com o cadastro mesmo assim?', 'Confirmação', mb_YesNo) = mrNo then
+            //exit;
+      begin
+        DBEdit5.SetFocus;
+        Exit;
+      end;
     end;
 
-    if trim(Dados.qryPessoasREGIME_TRIBUTARIO.Value) = '' then
+    if Trim(Dados.qryPessoasUF.Value) = '' then
     begin
-      ShowMessage('Informe o Regime Tributário da Pessoa!');
-      DBComboBoxEh1.SetFocus;
-      exit;
+      if Application.messageBox
+            ('O campo UF não foi preenchido!' + sLineBreak +
+            'Deseja prosseguir com o cadastro mesmo assim?', 'Confirmação', mb_YesNo) = mrNo then
+            //exit;
+      begin
+        DBComboBoxEh1.SetFocus;
+        Exit;
+      end;
     end;
+
+    if Trim(Dados.qryPessoasISENTO.Value) = '' then
+    begin
+      if Application.messageBox
+            ('O campo TIPO DE CONTRIBUINTE não foi preenchido!' + sLineBreak +
+            'Deseja prosseguir com o cadastro mesmo assim?', 'Confirmação', mb_YesNo) = mrNo then
+            //exit;
+      begin
+        DBComboBoxEh2.SetFocus;
+        Exit;
+      end;
+    end;
+
+    if Trim(Dados.qryPessoasREGIME_TRIBUTARIO.Value) = '' then
+    begin
+      if Application.messageBox
+            ('O campo REGIME TRIBUTÁRIO não foi preenchido!' + sLineBreak +
+            'Deseja prosseguir com o cadastro mesmo assim?', 'Confirmação', mb_YesNo) = mrNo then
+            //exit;
+      begin
+        DBComboBox4.SetFocus;
+        Exit;
+      end;
+    end;
+
 
     if (qryContatos.State in dsEditModes) then
       qryContatos.Post;

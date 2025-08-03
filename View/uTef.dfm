@@ -11,9 +11,7 @@ object FrmTEF: TFrmTEF
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object pMensagem: TPanel
     Left = 0
@@ -138,6 +136,7 @@ object FrmTEF: TFrmTEF
     TEFPayGoWeb.SuportaViasDiferenciadas = True
     TEFPayGoWeb.UtilizaSaldoTotalVoucher = False
     TEFPayGoWeb.ConfirmarTransacoesPendentes = True
+    TEFPayGoWeb.PerguntarCartaoDigitadoAposCancelarLeitura = False
     TEFDial.ArqTemp = 'C:\TEF_DIAL\req\intpos.tmp'
     TEFDial.ArqReq = 'C:\TEF_DIAL\req\intpos.001'
     TEFDial.ArqSTS = 'C:\TEF_DIAL\resp\intpos.sts'
@@ -211,6 +210,21 @@ object FrmTEF: TFrmTEF
     TEFConvCard.ArqSTS = 'C:\ger_convenio\rx\crtsol.ok'
     TEFConvCard.ArqResp = 'C:\ger_convenio\rx\crtsol.001'
     TEFConvCard.GPExeName = 'C:\ger_convcard\convcard.exe'
+    TEFCliSiTefModular.ArqTemp = 'C:\Client\req\intpos.tmp'
+    TEFCliSiTefModular.ArqReq = 'C:\Client\req\intpos.001'
+    TEFCliSiTefModular.ArqSTS = 'C:\Client\resp\intpos.sts'
+    TEFCliSiTefModular.ArqResp = 'C:\Client\resp\intpos.001'
+    TEFCliSiTefModular.GPExeName = 'C:\Client\ClientSiTef.exe'
+    TEFDirecao.ArqTemp = 'C:\TEF_DIAL\req\intpos.tmp'
+    TEFDirecao.ArqReq = 'C:\TEF_DIAL\req\intpos.001'
+    TEFDirecao.ArqSTS = 'C:\TEF_DIAL\resp\intpos.sts'
+    TEFDirecao.ArqResp = 'C:\TEF_DIAL\resp\intpos.001'
+    TEFDirecao.GPExeName = 'C:\DPOS8\Bin\GPDirecao.exe'
+    TEFElgin.ArqTemp = 'C:\Cliente\req\intpos.tmp'
+    TEFElgin.ArqReq = 'C:\Cliente\req\intpos.001'
+    TEFElgin.ArqSTS = 'C:\Cliente\resp\intpos.sts'
+    TEFElgin.ArqResp = 'C:\Cliente\resp\intpos.001'
+    TEFElgin.GPExeName = 'C:\ELGIN\TEFPassivo\E1_TEFPay_Passivo.exe'
     OnAguardaResp = ACBrTEFD1AguardaResp
     OnExibeMsg = ACBrTEFD1ExibeMsg
     OnBloqueiaMouseTeclado = ACBrTEFD1BloqueiaMouseTeclado

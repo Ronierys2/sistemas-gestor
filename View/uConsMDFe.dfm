@@ -41,8 +41,6 @@ object frmConsMDFe: TfrmConsMDFe
       'Duplicidade')
     TabIndex = 0
     OnChange = TabSet1Change
-    ExplicitWidth = 1190
-    ExplicitHeight = 370
     object DBGrid1: TDBGrid
       Left = 4
       Top = 29
@@ -123,7 +121,6 @@ object frmConsMDFe: TfrmConsMDFe
       Align = alLeft
       BevelOuter = bvNone
       TabOrder = 0
-      ExplicitHeight = 100
       object btnCancelar: TSpeedButton
         AlignWithMargins = True
         Left = 195
@@ -1478,7 +1475,6 @@ object frmConsMDFe: TfrmConsMDFe
           0000000000000000000000000000000000000000000000000000}
         Layout = blGlyphTop
         ParentFont = False
-        Visible = False
         OnClick = SpeedButton1Click
         ExplicitLeft = 808
         ExplicitTop = 4
@@ -1494,8 +1490,6 @@ object frmConsMDFe: TfrmConsMDFe
     Color = 16514043
     ParentBackground = False
     TabOrder = 1
-    ExplicitTop = 437
-    ExplicitWidth = 1190
     object LblSaldo: TLabel
       Left = 633
       Top = 10
@@ -1541,7 +1535,6 @@ object frmConsMDFe: TfrmConsMDFe
       Align = alRight
       BevelOuter = bvNone
       TabOrder = 1
-      ExplicitLeft = 805
     end
   end
   object Panel4: TPanel
@@ -1552,7 +1545,6 @@ object frmConsMDFe: TfrmConsMDFe
     Align = alTop
     BevelOuter = bvNone
     TabOrder = 2
-    ExplicitWidth = 1190
     object GroupBox2: TGroupBox
       Left = 0
       Top = 0
@@ -1567,7 +1559,6 @@ object frmConsMDFe: TfrmConsMDFe
       Font.Style = []
       ParentFont = False
       TabOrder = 0
-      ExplicitWidth = 1190
       object LblPeriodo: TLabel
         Left = 10
         Top = 18
@@ -1704,7 +1695,7 @@ object frmConsMDFe: TfrmConsMDFe
     Top = 158
   end
   object frxReport: TfrxReport
-    Version = '2022.1.3'
+    Version = '2022.3'
     DotMatrixReport = False
     IniFile = '\Software\Fast Reports'
     PreviewOptions.Buttons = [pbPrint, pbLoad, pbSave, pbExport, pbZoom, pbFind, pbOutline, pbPageSetup, pbTools, pbEdit, pbNavigator, pbExportQuick]

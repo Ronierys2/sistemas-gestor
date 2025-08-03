@@ -259,6 +259,8 @@ type
     cxWhats: TcxButton;
     cxCancelar: TcxButton;
     cxInutiliza: TcxButton;
+    Panel12: TPanel;
+    cxSair: TcxButton;
     procedure edtLocChange(Sender: TObject);
     procedure DBGrid1DrawColumnCell(Sender: TObject; const Rect: TRect;
       DataCol: Integer; Column: TColumn; State: TGridDrawState);
@@ -292,6 +294,7 @@ type
     procedure cxImprimirClick(Sender: TObject);
     procedure cxWhatsClick(Sender: TObject);
     procedure cxCCeClick(Sender: TObject);
+    procedure cxSairClick(Sender: TObject);
   private
     procedure localiza;
     procedure tamanho;
@@ -628,6 +631,11 @@ begin
   finally
     cxImprimir.Enabled := true;
   end;
+end;
+
+procedure TfrmConsCTe_Rodo.cxSairClick(Sender: TObject);
+begin
+close;
 end;
 
 procedure TfrmConsCTe_Rodo.cxWhatsClick(Sender: TObject);

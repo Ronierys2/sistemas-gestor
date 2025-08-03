@@ -142,8 +142,8 @@ object frmAcesso: TfrmAcesso
       object img_logo_empresa: TImage
         Left = -6
         Top = 89
-        Width = 350
-        Height = 350
+        Width = 512
+        Height = 512
         Picture.Data = {
           0954506E67496D61676589504E470D0A1A0A0000000D494844520000015E0000
           015E0806000000CD2B771A000000017352474200AECE1CE90000881949444154
@@ -1246,7 +1246,7 @@ object frmAcesso: TfrmAcesso
         Height = 22
         Alignment = taCenter
         AutoSize = False
-        Caption = 'UPDATE 6'
+        Caption = 'UPDATE 6.2'
         Font.Charset = ANSI_CHARSET
         Font.Color = 8011008
         Font.Height = -16

@@ -1832,6 +1832,8 @@ object frmEmpresa: TfrmEmpresa
               DataField = 'NT_COMPRA_IMP_CUSTO'
               DataSource = dsEmpresa
               TabOrder = 10
+              ValueChecked = 'S'
+              ValueUnchecked = 'N'
               WordWrap = True
             end
           end

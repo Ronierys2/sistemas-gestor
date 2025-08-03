@@ -652,7 +652,7 @@ object frmCadNFe: TfrmCadNFe
       object Label11: TLabel
         Left = 12
         Top = 5
-        Width = 45
+        Width = 46
         Height = 15
         Caption = 'SubTotal'
         Font.Charset = ANSI_CHARSET
@@ -782,7 +782,7 @@ object frmCadNFe: TfrmCadNFe
       object Label24: TLabel
         Left = 858
         Top = 44
-        Width = 25
+        Width = 26
         Height = 15
         Caption = 'Total'
         Font.Charset = ANSI_CHARSET
@@ -834,7 +834,7 @@ object frmCadNFe: TfrmCadNFe
       object Label39: TLabel
         Left = 616
         Top = 44
-        Width = 86
+        Width = 87
         Height = 15
         Caption = 'Base de ICMS ST'
         Font.Charset = ANSI_CHARSET
@@ -847,7 +847,7 @@ object frmCadNFe: TfrmCadNFe
       object Label40: TLabel
         Left = 737
         Top = 44
-        Width = 88
+        Width = 89
         Height = 15
         Caption = 'Valor de ICMS ST'
         Font.Charset = ANSI_CHARSET
@@ -1269,7 +1269,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 21
         Top = 33
         Width = 188
-        Height = 19
+        Height = 21
         Ctl3D = False
         DataField = 'ESPECIE'
         DataSource = dsVenda
@@ -1286,7 +1286,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 215
         Top = 33
         Width = 203
-        Height = 19
+        Height = 21
         Ctl3D = False
         DataField = 'MARCA'
         DataSource = dsVenda
@@ -1303,7 +1303,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 424
         Top = 33
         Width = 115
-        Height = 19
+        Height = 21
         Ctl3D = False
         DataField = 'QVOL'
         DataSource = dsVenda
@@ -1320,7 +1320,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 545
         Top = 33
         Width = 74
-        Height = 19
+        Height = 21
         Ctl3D = False
         DataField = 'PESOL'
         DataSource = dsVenda
@@ -1337,7 +1337,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 625
         Top = 33
         Width = 75
-        Height = 19
+        Height = 21
         Ctl3D = False
         DataField = 'PESOB'
         DataSource = dsVenda
@@ -1413,7 +1413,7 @@ object frmCadNFe: TfrmCadNFe
       object Label5: TLabel
         Left = 256
         Top = 17
-        Width = 73
+        Width = 74
         Height = 15
         Caption = 'Transportador'
         Font.Charset = ANSI_CHARSET
@@ -1466,7 +1466,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 256
         Top = 32
         Width = 52
-        Height = 19
+        Height = 21
         CharCase = ecUpperCase
         Ctl3D = False
         DataField = 'ID_TRANSPORTADOR'
@@ -1485,7 +1485,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 312
         Top = 32
         Width = 404
-        Height = 19
+        Height = 21
         Ctl3D = False
         ParentCtl3D = False
         DynProps = <>
@@ -1510,7 +1510,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 722
         Top = 32
         Width = 76
-        Height = 19
+        Height = 21
         CharCase = ecUpperCase
         Color = clWhite
         Ctl3D = False
@@ -1529,7 +1529,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 801
         Top = 32
         Width = 34
-        Height = 19
+        Height = 21
         CharCase = ecUpperCase
         Color = clWhite
         Ctl3D = False
@@ -1548,7 +1548,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 16
         Top = 32
         Width = 234
-        Height = 19
+        Height = 21
         Ctl3D = False
         DataField = 'TIPO_FRETE'
         DataSource = dsVenda
@@ -1591,7 +1591,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 25
         Top = 28
         Width = 757
-        Height = 19
+        Height = 21
         Color = clWhite
         Ctl3D = False
         DataField = 'REFERENCIA'
@@ -1620,7 +1620,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 17
         Top = 20
         Width = 757
-        Height = 19
+        Height = 21
         Color = clWhite
         Ctl3D = False
         DataField = 'MOTIVO_CONTIGENCIA'
@@ -2504,7 +2504,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 127
         Top = 27
         Width = 64
-        Height = 19
+        Height = 21
         Ctl3D = False
         Font.Charset = ANSI_CHARSET
         Font.Color = clBlack
@@ -2521,7 +2521,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 7
         Top = 27
         Width = 115
-        Height = 19
+        Height = 21
         TabStop = False
         Color = 16053492
         Ctl3D = False
@@ -2552,7 +2552,7 @@ object frmCadNFe: TfrmCadNFe
         object Label44: TLabel
           Left = 10
           Top = 21
-          Width = 188
+          Width = 189
           Height = 15
           Caption = 'Tipo de Integra'#231#227'o para pagamento'
           Font.Charset = ANSI_CHARSET
@@ -2718,7 +2718,7 @@ object frmCadNFe: TfrmCadNFe
         Left = 351
         Top = 218
         Width = 115
-        Height = 19
+        Height = 21
         TabStop = False
         Color = 16053492
         Ctl3D = False

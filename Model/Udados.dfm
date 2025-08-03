@@ -69,7 +69,6 @@ object Dados: TDados
     object qryPessoasCNPJ: TStringField
       FieldName = 'CNPJ'
       Origin = 'CNPJ'
-      Required = True
     end
     object qryPessoasIE: TStringField
       FieldName = 'IE'
@@ -85,13 +84,11 @@ object Dados: TDados
     object qryPessoasENDERECO: TStringField
       FieldName = 'ENDERECO'
       Origin = 'ENDERECO'
-      Required = True
       Size = 50
     end
     object qryPessoasNUMERO: TStringField
       FieldName = 'NUMERO'
       Origin = 'NUMERO'
-      Required = True
       Size = 10
     end
     object qryPessoasCOMPLEMENTO: TStringField
@@ -107,25 +104,21 @@ object Dados: TDados
     object qryPessoasMUNICIPIO: TStringField
       FieldName = 'MUNICIPIO'
       Origin = 'MUNICIPIO'
-      Required = True
       Size = 35
     end
     object qryPessoasBAIRRO: TStringField
       FieldName = 'BAIRRO'
       Origin = 'BAIRRO'
-      Required = True
       Size = 35
     end
     object qryPessoasUF: TStringField
       FieldName = 'UF'
       Origin = 'UF'
-      Required = True
       Size = 2
     end
     object qryPessoasCEP: TStringField
       FieldName = 'CEP'
       Origin = 'CEP'
-      Required = True
       Size = 8
     end
     object qryPessoasFONE1: TStringField

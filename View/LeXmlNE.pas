@@ -820,7 +820,124 @@ begin
             dados.QryXmlDetailFK_XML_MASTER.Value :=
               dados.qryXmlMasterCODIGO.Value;
 
-            dados.QryXmlDetailCFOP.Value := dados.qryXmlMasterCFOP.Value;
+              //Dentro do Estado
+
+            if prod.CFOP = '5102' then
+	          begin
+	            dados.QryXmlDetailCFOP.Value := '1102';
+	          end
+            else if prod.CFOP = '5105' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '1102';
+            end
+            else if prod.CFOP = '5106' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '1102';
+            end
+            else if prod.CFOP = '5104' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '1102';
+            end
+            else if prod.CFOP = '5401' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '1403';
+            end
+
+	          else if prod.CFOP = '5405' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '1403';
+            end
+            else if prod.CFOP = '5403' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '1403';
+            end
+            else if prod.CFOP = '5910' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '1910';
+            end
+            else if prod.CFOP = '5949' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '1949';
+            end
+            else if prod.CFOP = '5101' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '1102';
+            end
+            else if prod.CFOP = '5655' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '1652';
+            end
+            else if prod.CFOP = '5658' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '1659';
+            end
+            else if prod.CFOP = '5661' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '1661';
+            end
+            else if prod.CFOP = '5920' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '1920';
+            end
+            else if prod.CFOP = '5921' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '1921';
+            end
+            else if prod.CFOP = '5929' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '1102';
+            end
+            else if prod.CFOP = '5904' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '1904';
+            end
+
+            else if prod.CFOP = '5906' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '1906';
+            end
+
+            //Fora do Estado
+
+            else if prod.CFOP = '6102' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '2102';
+            end
+            else if prod.CFOP = '6403' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '2403';
+            end
+            else if prod.CFOP = '6404' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '2403';
+            end
+            else if prod.CFOP = '6100' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '2102';
+            end
+            else if prod.CFOP = '6101' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '2102';
+            end
+            else if prod.CFOP = '6401' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '2403';
+            end
+            else if prod.CFOP = '6910' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '2910';
+            end
+            else if prod.CFOP = '6949' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '2949';
+            end
+            else if prod.CFOP = '6120' then
+            begin
+              dados.QryXmlDetailCFOP.Value := '2102';
+            end;
+
+
+            //dados.QryXmlDetailCFOP.Value := dados.qryXmlMasterCFOP.Value;
 
             dados.QryXmlDetailCODIGO.Value := dados.Numerador('XML_DETAIL',
               'CODIGO', 'N', '', '');

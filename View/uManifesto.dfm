@@ -29,8 +29,6 @@ object FrmManifesto: TFrmManifesto
       'Memo1')
     ReadOnly = True
     TabOrder = 2
-    ExplicitWidth = 1014
-    ExplicitHeight = 282
   end
   object Panel2: TPanel
     Left = 0
@@ -990,7 +988,7 @@ object FrmManifesto: TFrmManifesto
     object Label2: TLabel
       Left = 625
       Top = 6
-      Width = 87
+      Width = 89
       Height = 15
       Caption = 'TOTAL DE NF-E  |'
       Font.Charset = ANSI_CHARSET
@@ -1212,8 +1210,6 @@ object FrmManifesto: TFrmManifesto
       'Todas')
     TabIndex = 0
     OnChange = TabSet1Change
-    ExplicitWidth = 1014
-    ExplicitHeight = 282
     object DBGrid1: TDBGridEh
       Left = 4
       Top = 29

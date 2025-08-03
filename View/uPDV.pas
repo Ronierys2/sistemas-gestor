@@ -1460,7 +1460,8 @@ begin
   Dados.qryExecute.SQL.Add('FORMA_PAGAMENTO,');
   Dados.qryExecute.SQL.Add('FK_ENTREGADOR,');
   Dados.qryExecute.SQL.Add('TELA,');
-  Dados.qryExecute.SQL.Add('FLAG_NFCE');
+  Dados.qryExecute.SQL.Add('FLAG_NFCE,');
+  Dados.qryExecute.SQL.Add('HORA');
   Dados.qryExecute.SQL.Add(')');
   Dados.qryExecute.SQL.Add('VALUES');
   Dados.qryExecute.SQL.Add('(');
@@ -1497,7 +1498,8 @@ begin
   Dados.qryExecute.SQL.Add(':FORMA_PAGAMENTO,');
   Dados.qryExecute.SQL.Add(':FK_ENTREGADOR,');
   Dados.qryExecute.SQL.Add(':TELA,');
-  Dados.qryExecute.SQL.Add(':FLAG_NFCE');
+  Dados.qryExecute.SQL.Add(':FLAG_NFCE,');
+  Dados.qryExecute.SQL.Add(':HORA');
   Dados.qryExecute.SQL.Add(');');
   if PageControl2.ActivePage = TabPDV then
   begin
@@ -1543,6 +1545,7 @@ begin
   Dados.qryExecute.ParamByName('DESCONTO').Value := 0;
   Dados.qryExecute.ParamByName('TOTAL').Value := 0;
   Dados.qryExecute.ParamByName('TROCO').Value := 0;
+  Dados.qryExecute.ParamByName('HORA').Value := Time;
   Dados.qryExecute.ParamByName('FK_MESA').Clear;
   if PageControl2.ActivePage = tabRestaurante then
     Dados.qryExecute.ParamByName('FK_MESA').Value :=
@@ -2438,6 +2441,7 @@ begin
       form_esmaecer_fundo.show;
       frmFechavenda.ShowModal;
     finally
+      form_esmaecer_fundo.hide;
       edtFone.Text := '';
       if frmFechavenda.vFinalizou then
         FinalizaVenda;
@@ -4939,21 +4943,34 @@ end;
 
 procedure TFrmPDV.FormClose(Sender: TObject; var Action: TCloseAction);
 begin
-  if (PageControl2.ActivePage = TabPDV) then
-  begin
-    if (qryVenda.State in dsEditModes) then
-      qryVenda.Post;
-    Dados.Conexao.Commit;
-  end
-  else
-  begin
-    if (qryVenda.State = dsInsert) then
-      qryVenda.Cancel;
-  end;
-  qryVenda.close;
-  qryItem.close;
-  qryPesqProd.close;
-  qryPesqProd.close;
+  form_msg_confirmacao := Tform_msg_confirmacao.Create( FrmPDV );
+  form_msg_confirmacao.lbl_pergunta.Caption:= 'Deseja sair do PDV?';
+  form_msg_confirmacao.lbl_texto.Caption   := 'O PDV será fechado, certifique de salvar suas alterações.';
+  form_msg_confirmacao.ShowModal;
+
+       if form_msg_confirmacao.bResposta then
+        begin
+            if (PageControl2.ActivePage = TabPDV) then
+            begin
+              if (qryVenda.State in dsEditModes) then
+                qryVenda.Post;
+              Dados.Conexao.Commit;
+            end
+            else
+            begin
+              if (qryVenda.State = dsInsert) then
+                qryVenda.Cancel;
+            end;
+            qryVenda.close;
+            qryItem.close;
+            qryPesqProd.close;
+            qryPesqProd.close;
+        end
+        else
+        begin
+          Action := caNone;
+          form_msg_confirmacao.Close;
+        end;
 end;
 
 procedure TFrmPDV.ChecaATACADO(produto, venda: Integer);
